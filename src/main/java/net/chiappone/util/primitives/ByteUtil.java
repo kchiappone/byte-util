@@ -10,20 +10,20 @@ import java.io.ObjectOutputStream;
 
 /**
  * @author Kurtis Chiappone
- * @date 10/9/2016
  */
 public class ByteUtil {
 
     private static final Logger logger = LoggerFactory.getLogger( ByteUtil.class );
 
     /**
-     * @param obj
-     * @return
-     * @throws IOException
+     * Converts an object to a byte array.
+     *
+     * @param obj the object to convert to a byte array
+     * @return a byte array
      */
     public static byte[] toByteArray( Object obj ) {
 
-        byte[] sendBuf = null;
+        byte[] bytes = null;
         ObjectOutputStream os = null;
 
         try {
@@ -33,7 +33,7 @@ public class ByteUtil {
             os.flush();
             os.writeObject( obj );
             os.flush();
-            sendBuf = byteStream.toByteArray();
+            bytes = byteStream.toByteArray();
 
         } catch ( IOException e ) {
 
@@ -57,7 +57,7 @@ public class ByteUtil {
 
         }
 
-        return sendBuf;
+        return bytes;
 
     }
 
